@@ -25,9 +25,6 @@ class Intents:
     def __init__(self, value: int = 0):
         self.value: int = value
 
-    # ----------------------------
-    # Factory methods
-    # ----------------------------
     @classmethod
     def none(cls) -> Intents:
         """No intents enabled."""
@@ -78,9 +75,6 @@ class Intents:
         """Create intents object from raw bit value."""
         return cls(value)
 
-    # ----------------------------
-    # Helpers
-    # ----------------------------
     def has(self, flag: int) -> bool:
         """Check if an intent is enabled."""
         return (self.value & flag) == flag
@@ -93,9 +87,6 @@ class Intents:
         """Disable a specific intent."""
         self.value &= ~flag
 
-    # ----------------------------
-    # Operators
-    # ----------------------------
     def __or__(self, other: Intents) -> Intents:
         return Intents(self.value | other.value)
 
@@ -105,9 +96,5 @@ class Intents:
     def __contains__(self, flag: int) -> bool:
         return self.has(flag)
 
-    # ----------------------------
-    # Debugging / display
-    # ----------------------------
     def __repr__(self) -> str:
         return f"<Intents value={self.value}>"
-      
